@@ -1,5 +1,5 @@
 /**
- * Contenu éditorial riche pour les 5 pages de service.
+ * Contenu éditorial riche pour les pages de service.
  * Source unique : utilisé par app/services/[slug]/page.tsx.
  */
 
@@ -25,16 +25,88 @@ export type ServiceContent = {
 
 export const servicesContent: ServiceContent[] = [
   {
-    slug: "electricite",
-    metaTitle: "Électricien à Lyon — mise aux normes NF C 15-100",
+    slug: "depannage-urgence",
+    metaTitle: "Dépannage électrique urgent 24h/24 — Paris & IDF",
     metaDescription:
-      "Rénovation de tableau, mise aux normes NF C 15-100, attestation Consuel et dépannage électrique à Lyon et dans l'ouest lyonnais. Devis gratuit.",
+      "Électricien d'urgence à Paris et en Île-de-France. Intervention en 30 minutes, 24h/24 et 7j/7. Panne de courant, disjoncteur, court-circuit. Devis gratuit.",
+    heroImageKey: "heroElectricien",
+    serviceType: "Emergency Electrical Repair",
+    intro: [
+      "Une coupure de courant en pleine nuit, un disjoncteur qui refuse de se réenclencher, une odeur de brûlé près du tableau : une panne électrique n'attend pas les heures ouvrables. Nos électriciens sont mobilisables immédiatement partout à Paris et en région parisienne, 24h/24, 7j/7, jours fériés compris.",
+      "Toutes les demandes passent par un point d'entrée unique — un numéro et un formulaire. Vous décrivez la panne une seule fois, nous qualifions le problème au téléphone et nous engageons l'électricien le mieux équipé pour votre cas. Le délai réel vous est confirmé avant le départ, et le tarif est annoncé avant que quoi que ce soit ne commence.",
+      "Nous couvrons Paris intra-muros et les huit départements franciliens. Sur Paris et la petite couronne (92, 93, 94), nous visons une intervention en 30 minutes ; en grande couronne, comptez généralement entre une heure et deux heures selon la commune.",
+    ],
+    prestations: [
+      {
+        title: "Panne de courant totale ou partielle",
+        text: "Diagnostic immédiat de l'origine de la coupure : défaut sur le tableau, sur un circuit, ou en amont côté distributeur. Rétablissement dès que la cause est identifiée et sécurisée.",
+      },
+      {
+        title: "Disjoncteur qui saute à répétition",
+        text: "Identification du circuit ou de l'appareil fautif par isolement successif, contrôle des protections différentielles et remplacement des éléments défaillants.",
+      },
+      {
+        title: "Court-circuit et défaut d'isolement",
+        text: "Localisation précise du défaut au matériel de mesure professionnel, réparation du câblage concerné et vérification de l'isolement de l'installation avant remise sous tension.",
+      },
+      {
+        title: "Odeur de brûlé, étincelles, échauffement",
+        text: "Intervention prioritaire. Mise hors tension, contrôle du tableau et des connexions, remplacement des éléments dégradés et remise en sécurité de l'installation.",
+      },
+      {
+        title: "Recherche de panne",
+        text: "Quand l'origine du problème n'est pas évidente, nous procédons à une recherche méthodique circuit par circuit, avec un rapport de ce qui a été trouvé et corrigé.",
+      },
+      {
+        title: "Chauffage électrique et ballon d'eau chaude",
+        text: "Panne de convecteur, de plancher chauffant ou de chauffe-eau : contrôle de l'alimentation, du thermostat, de la résistance et du contacteur jour/nuit.",
+      },
+      {
+        title: "Volets roulants, interphone, VMC",
+        text: "Dépannage des équipements électriques du logement : motorisation de volet bloquée, interphone muet, VMC à l'arrêt.",
+      },
+    ],
+    reassurances: [
+      "Intervention en 30 min sur Paris et petite couronne",
+      "Disponible 24h/24, 7j/7, jours fériés inclus",
+      "Devis annoncé avant intervention, tarif respecté",
+      "Électriciens qualifiés, identifiés et assurés",
+    ],
+    faq: [
+      {
+        q: "Combien coûte un dépannage électrique en urgence ?",
+        a: "Le tarif dépend de la nature de la panne et de l'heure d'intervention. Le déplacement et le diagnostic sont gratuits, et le montant vous est annoncé avant tout travail : vous validez d'abord, nous intervenons ensuite. Les interventions de nuit, le dimanche et les jours fériés font l'objet d'une majoration, annoncée elle aussi à l'avance.",
+      },
+      {
+        q: "Intervenez-vous vraiment en 30 minutes ?",
+        a: "C'est notre objectif sur Paris et la petite couronne (92, 93, 94), quand une équipe est disponible à proximité. En grande couronne, le délai est généralement d'une à deux heures. Dans tous les cas, le délai réel vous est confirmé au téléphone avant que l'électricien ne se mette en route.",
+      },
+      {
+        q: "Que faire en attendant l'électricien ?",
+        a: "En cas d'odeur de brûlé, d'étincelles ou de fumée, coupez le disjoncteur général et n'utilisez plus l'installation concernée. Ne touchez jamais un câble dénudé et n'ouvrez pas le tableau vous-même. En cas de départ de feu, appelez le 18 ou le 112.",
+      },
+      {
+        q: "La panne peut-elle venir de mon fournisseur d'électricité ?",
+        a: "Oui, une coupure peut venir du réseau ou du compteur, en amont de votre installation. Notre diagnostic permet de trancher rapidement : si le défaut est en amont, nous vous l'indiquons et vous orientons vers le gestionnaire de réseau, sans vous facturer de réparation inutile.",
+      },
+      {
+        q: "Intervenez-vous pour les copropriétés et les commerces ?",
+        a: "Oui. Nous intervenons en parties communes pour les syndics, ainsi que dans les commerces et bureaux. Des contrats de maintenance avec astreinte peuvent être mis en place pour garantir une prise en charge prioritaire.",
+      },
+    ],
+    galleryKeys: ["heroElectricien", "tableauElectrique", "cablage"],
+  },
+  {
+    slug: "electricite",
+    metaTitle: "Électricien à Paris — mise aux normes NF C 15-100",
+    metaDescription:
+      "Rénovation de tableau, mise aux normes NF C 15-100, attestation Consuel et dépannage électrique à Paris et en Île-de-France. Devis gratuit.",
     heroImageKey: "heroElectricien",
     serviceType: "Electrical installation and repair",
     intro: [
       "Une installation électrique vieillissante ou non conforme représente un risque réel pour vos occupants et votre bien immobilier. Chez AH ELEC RENOV, nous intervenons sur l'ensemble de votre installation pour la mettre ou la maintenir en conformité avec la norme NF C 15-100, en vigueur pour tous les logements en France.",
       "Que vous soyez propriétaire souhaitant vendre, locataire souhaitant sécuriser un appartement ancien, ou particulier réalisant une extension, notre électricien diplômé établit un diagnostic complet avant de vous proposer un devis clair, sans surprise. Chaque intervention débouche sur une attestation Consuel, document indispensable pour la mise en service ou la remise aux normes officielle.",
-      "Nous intervenons à Lyon et dans tout l'ouest lyonnais (Francheville, Tassin-la-Demi-Lune, Écully, Sainte-Foy-lès-Lyon, Craponne, Charbonnières-les-Bains), sans sous-traitance. Un seul artisan, du diagnostic à la livraison.",
+      "Nous intervenons à Paris et dans toute l'Île-de-France (Boulogne-Billancourt, Neuilly-sur-Seine, Levallois-Perret, Vincennes, Montreuil, Saint-Maur-des-Fossés), sans sous-traitance. Un seul artisan, du diagnostic à la livraison.",
     ],
     prestations: [
       {
@@ -90,8 +162,8 @@ export const servicesContent: ServiceContent[] = [
         a: "Oui. Pour les pannes bloquantes (coupure générale, court-circuit dangereux), nous organisons une intervention dans les meilleurs délais. Appelez directement le 06 50 04 52 33 pour évaluer la situation.",
       },
       {
-        q: "Intervenez-vous uniquement à Lyon ou aussi en banlieue ?",
-        a: "Nous couvrons Lyon et toute la zone ouest : Francheville, Tassin-la-Demi-Lune, Écully, Sainte-Foy-lès-Lyon, Craponne, Charbonnières-les-Bains, Marcy-l'Étoile et La Tour-de-Salvagny.",
+        q: "Intervenez-vous uniquement à Paris ou aussi en banlieue ?",
+        a: "Nous couvrons Paris et toute la zone ouest : Boulogne-Billancourt, Neuilly-sur-Seine, Levallois-Perret, Vincennes, Montreuil, Saint-Maur-des-Fossés, Issy-les-Moulineaux et Courbevoie.",
       },
       {
         q: "Faut-il couper l'électricité toute la journée pour une rénovation de tableau ?",
@@ -103,9 +175,9 @@ export const servicesContent: ServiceContent[] = [
 
   {
     slug: "salle-de-bain",
-    metaTitle: "Rénovation salle de bain Lyon — douche italienne, PMR",
+    metaTitle: "Rénovation salle de bain Paris — douche italienne, PMR",
     metaDescription:
-      "Rénovation complète de salle de bain à Lyon : douche à l'italienne, adaptation PMR, plomberie et carrelage. Un seul artisan, devis gratuit.",
+      "Rénovation complète de salle de bain à Paris : douche à l'italienne, adaptation PMR, plomberie et carrelage. Un seul artisan, devis gratuit.",
     heroImageKey: "sdbApres",
     serviceType: "Bathroom renovation",
     intro: [
@@ -176,9 +248,9 @@ export const servicesContent: ServiceContent[] = [
 
   {
     slug: "cuisine",
-    metaTitle: "Aménagement cuisine Lyon — électricité & plomberie incluses",
+    metaTitle: "Aménagement cuisine Paris — électricité & plomberie incluses",
     metaDescription:
-      "Aménagement de cuisine sur mesure à Lyon : pose de meubles, électricité aux normes, raccordements plomberie. Devis gratuit, secteur ouest lyonnais.",
+      "Aménagement de cuisine sur mesure à Paris : pose de meubles, électricité aux normes, raccordements plomberie. Devis gratuit, secteur région parisienne.",
     heroImageKey: "cuisineModerne",
     serviceType: "Kitchen renovation",
     intro: [
@@ -249,15 +321,15 @@ export const servicesContent: ServiceContent[] = [
 
   {
     slug: "plomberie",
-    metaTitle: "Plombier à Lyon — installation, rénovation, dépannage",
+    metaTitle: "Plombier à Paris — installation, rénovation, dépannage",
     metaDescription:
-      "Plomberie à Lyon et dans l'ouest lyonnais : installation neuve, rénovation de réseau, dépannage et remplacement de sanitaires. Devis gratuit.",
+      "Plomberie à Paris et en Île-de-France : installation neuve, rénovation de réseau, dépannage et remplacement de sanitaires. Devis gratuit.",
     heroImageKey: "plomberie",
     serviceType: "Plumbing services",
     intro: [
       "Une fuite d'eau non traitée abîme les structures, gâche les finitions et gonfle les factures. Chez AH ELEC RENOV, nous prenons en charge les travaux de plomberie dans leur intégralité, qu'il s'agisse d'une installation neuve lors d'une rénovation, d'un remplacement d'équipements vétustes ou d'un dépannage urgent.",
       "Notre approche est différente d'un plombier exclusif : comme nous intervenons aussi sur l'électricité et la rénovation complète, nous pouvons coordonner les deux corps de métier sans friction. Lors d'une rénovation de salle de bain ou d'une cuisine, cela évite les temps d'attente entre les interventions et les problèmes de communication entre artisans.",
-      "Nous intervenons à Lyon et dans tout l'ouest lyonnais (Francheville, Tassin, Écully, Sainte-Foy, Craponne, Charbonnières). Devis gratuit, travaux proprement exécutés, garantie décennale.",
+      "Nous intervenons à Paris et dans toute l'Île-de-France (Boulogne-Billancourt, Neuilly, Levallois-Perret, Vincennes, Montreuil, Charbonnières). Devis gratuit, travaux proprement exécutés, garantie décennale.",
     ],
     prestations: [
       {
@@ -278,7 +350,7 @@ export const servicesContent: ServiceContent[] = [
       },
       {
         title: "Dépannage et urgences",
-        text: "Localisation et réparation de fuites, débouchage de canalisations, remplacement de joints de chasse ou de siphon. Intervention rapide sur le secteur de Lyon et l'ouest lyonnais.",
+        text: "Localisation et réparation de fuites, débouchage de canalisations, remplacement de joints de chasse ou de siphon. Intervention rapide sur le secteur de Paris et l'Île-de-France.",
       },
       {
         title: "Chauffe-eau et ballon d'eau chaude",
@@ -287,7 +359,7 @@ export const servicesContent: ServiceContent[] = [
     ],
     reassurances: [
       "Plomberie et électricité coordonnées par le même artisan",
-      "Dépannage réactif sur Lyon et l'ouest lyonnais",
+      "Dépannage réactif sur Paris et l'Île-de-France",
       "Matériaux de qualité professionnelle (cuivre, multicouche, PVC)",
       "Devis gratuit avant toute intervention",
     ],
@@ -318,15 +390,15 @@ export const servicesContent: ServiceContent[] = [
 
   {
     slug: "renovation-interieure",
-    metaTitle: "Rénovation intérieure Lyon — clé en main, A à Z",
+    metaTitle: "Rénovation intérieure Paris — clé en main, A à Z",
     metaDescription:
-      "Rénovation intérieure à Lyon et dans l'ouest lyonnais : aménagement, isolation, cloisons, peinture et coordination complète. Un seul artisan. Devis gratuit.",
+      "Rénovation intérieure à Paris et en Île-de-France : aménagement, isolation, cloisons, peinture et coordination complète. Un seul artisan. Devis gratuit.",
     heroImageKey: "renovationChantier",
     serviceType: "Interior renovation",
     intro: [
       "Une rénovation intérieure réussie exige de la coordination : chaque corps de métier doit intervenir dans le bon ordre, sans temps mort ni chevauchement. Chez AH ELEC RENOV, nous pilotons l'ensemble du chantier, de la démolition aux finitions, en intégrant l'électricité et la plomberie que nous réalisons nous-mêmes.",
       "Cloisons, isolation thermique et acoustique, peinture, revêtements de sol : nous mettons en oeuvre les solutions adaptées à votre projet, que vous rénoviez un appartement entier, une chambre, un couloir ou un espace de vie. Pas de sous-traitance, pas de problème d'interface entre artisans.",
-      "Situés à Lyon 9e, nous intervenons sur Lyon et dans tout l'ouest lyonnais. Chaque projet commence par une visite gratuite et un devis détaillé, sans engagement. Vous savez exactement ce qui est prévu, dans quel ordre, et pour quel budget.",
+      "Situés à Paris 15e, nous intervenons sur Paris et dans toute l'Île-de-France. Chaque projet commence par une visite gratuite et un devis détaillé, sans engagement. Vous savez exactement ce qui est prévu, dans quel ordre, et pour quel budget.",
     ],
     prestations: [
       {

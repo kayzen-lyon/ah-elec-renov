@@ -1,5 +1,5 @@
 /**
- * Les 5 prestations. Chaque service = une landing SEO autonome (Phase 2).
+ * Les prestations. Chaque service = une landing SEO autonome (Phase 2).
  * En Phase 1 on s'en sert pour la grille de la home.
  */
 
@@ -21,6 +21,23 @@ export type ServiceIcon =
   | "pipe";
 
 export const services: Service[] = [
+  {
+    slug: "depannage-urgence",
+    title: "Dépannage électrique 24h/24",
+    short: "Intervention en 30 min, jour et nuit, à Paris et en Île-de-France.",
+    description:
+      "Panne de courant, disjoncteur qui saute, court-circuit : un électricien sur place en 30 minutes sur Paris et la petite couronne, 24h/24 et 7j/7.",
+    icon: "zap",
+    image:
+      "https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=1100&q=70",
+    highlights: [
+      "Panne de courant totale ou partielle",
+      "Disjoncteur qui saute, court-circuit",
+      "Recherche de panne au matériel de mesure",
+      "Remise en sécurité immédiate",
+      "Nuits, week-ends et jours fériés",
+    ],
+  },
   {
     slug: "electricite",
     title: "Électricité générale",

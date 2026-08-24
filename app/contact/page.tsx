@@ -19,12 +19,13 @@ import {
   company,
   mapsDirectionsUrl,
   mapsUrl,
+  displayLocation,
 } from "@/content/company";
 
 export const metadata: Metadata = {
-  title: "Contact — AH ELEC RENOV Lyon",
+  title: "Contact — AH ELEC RENOV Paris",
   description:
-    "Contactez AH ELEC RENOV à Lyon 9e : mobile, fixe, email et accès en voiture. Hocine ASLI répond du lundi au vendredi, 8h–18h.",
+    "Contactez AH ELEC RENOV à Paris 15e : mobile, fixe, email et accès en voiture. Hocine ASLI répond du lundi au vendredi, 8h–18h.",
 };
 
 const breadcrumbItems = [
@@ -67,10 +68,10 @@ const contactMethods = [
   },
   {
     icon: MapPin,
-    label: "Adresse",
-    value: `${company.address.street}, ${company.address.postalCode} ${company.address.city}`,
+    label: "Zone d'intervention",
+    value: displayLocation,
     href: mapsUrl,
-    note: "Siège social",
+    note: "75 · 77 · 78 · 91 · 92 · 93 · 94 · 95",
     isLink: false,
     external: true,
   },
@@ -79,17 +80,17 @@ const contactMethods = [
     label: "Horaires",
     value: company.hours,
     href: null,
-    note: null,
+    note: "Standard d'urgence ouvert en continu",
     isLink: false,
     external: false,
   },
 ] as const;
 
 const reassuranceItems = [
-  { title: "Réponse rapide", text: "Hocine ASLI vous rappelle en général le jour même." },
-  { title: "Devis gratuit", text: "Aucun frais de déplacement pour l'établissement du devis." },
-  { title: "Un seul interlocuteur", text: "Du premier appel à la réception de chantier, vous traitez avec la même personne." },
-  { title: "Secteur ouest lyonnais", text: "Lyon, Francheville, Tassin, Écully, Sainte-Foy… Pas de frais de déplacement dans le secteur." },
+  { title: "Rappel sous 5 minutes", text: "Toute demande envoyée depuis le site est traitée dès réception, 24h/24." },
+  { title: "Devis gratuit", text: "Diagnostic et devis offerts, déplacement compris. Tarif annoncé avant intervention." },
+  { title: "Un seul point d'entrée", text: "Un numéro et un formulaire uniques : vous ne décrivez votre panne qu'une seule fois." },
+  { title: "Paris & Île-de-France", text: "Paris intra-muros, petite et grande couronne — intervention en 30 min sur le cœur de zone." },
 ];
 
 export default function ContactPage() {
@@ -175,22 +176,23 @@ export default function ContactPage() {
             <Reveal className="flex flex-col gap-5">
               <div>
                 <h2 className="text-xl font-bold text-anthracite sm:text-2xl">
-                  Nous trouver
+                  Notre zone d'intervention
                 </h2>
                 <p className="mt-2 text-sm leading-relaxed text-muted">
-                  {company.address.street}, {company.address.postalCode} {company.address.city}
+                  {displayLocation} — Paris intra-muros, petite couronne (92,
+                  93, 94) et grande couronne (77, 78, 91, 95).
                 </p>
               </div>
 
               <div className="overflow-hidden rounded-2xl border border-line shadow-soft" style={{ aspectRatio: "4/3" }}>
                 <iframe
                   src={`https://www.google.com/maps?q=${encodeURIComponent(
-                    `${company.address.street} ${company.address.postalCode} ${company.address.city}`,
-                  )}&output=embed`}
-                  title={`Plan d'accès à ${company.brandName}, ${company.address.street} ${company.address.postalCode} ${company.address.city}`}
+                    "Île-de-France, France",
+                  )}&z=9&output=embed`}
+                  title={`Zone d'intervention de ${company.brandName} — Paris et Île-de-France`}
                   loading="lazy"
                   className="h-full w-full border-0"
-                  aria-label="Carte Google Maps de nos locaux"
+                  aria-label="Carte Google Maps de la zone d'intervention"
                 />
               </div>
 
@@ -204,7 +206,7 @@ export default function ContactPage() {
                   className="flex-1 justify-center"
                 >
                   <MapPin className="h-4 w-4" aria-hidden />
-                  Obtenir l'itinéraire
+                  Voir la zone sur Maps
                 </Button>
                 <ButtonLink
                   href={company.contact.phoneHref}

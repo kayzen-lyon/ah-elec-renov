@@ -27,9 +27,9 @@ import { breadcrumbJsonLd } from "@/lib/structured-data";
 /* ------------------------------------------------------------------ */
 
 export const metadata: Metadata = {
-  title: "Électricité & rénovation intérieure à Lyon",
+  title: "Électricité & rénovation intérieure à Paris",
   description:
-    "Électricité, salle de bain, cuisine, plomberie et rénovation intérieure à Lyon et dans l'ouest lyonnais. Un seul artisan, devis gratuit.",
+    "Électricité, salle de bain, cuisine, plomberie et rénovation intérieure à Paris et en Île-de-France. Un seul artisan, devis gratuit.",
 };
 
 /* ------------------------------------------------------------------ */
@@ -54,7 +54,7 @@ const serviceImageAlts: Record<string, string> = {
   "salle-de-bain": "Salle de bain rénovée avec douche à l'italienne",
   cuisine: "Cuisine moderne aménagée sur mesure",
   plomberie: "Plomberie professionnelle, installation de sanitaires",
-  "renovation-interieure": "Intérieur rénové clé en main à Lyon",
+  "renovation-interieure": "Intérieur rénové clé en main à Paris",
 };
 
 const reassurances = [
@@ -65,8 +65,8 @@ const reassurances = [
   },
   {
     icon: MapPin,
-    title: "Ancré dans l'ouest lyonnais",
-    text: "Basés à Lyon 9e, nous intervenons à Francheville, Tassin, Écully, Sainte-Foy, Craponne et Charbonnières. Réactivité garantie.",
+    title: "Ancré dans la région parisienne",
+    text: "Basés à Paris 15e, nous intervenons à Boulogne-Billancourt, Neuilly, Levallois-Perret, Vincennes, Montreuil et Charbonnières. Réactivité garantie.",
   },
   {
     icon: ShieldCheck,
@@ -97,8 +97,8 @@ export default function ServicesPage() {
       {/* Hero */}
       <PageHero
         eyebrow="Nos prestations"
-        title="Électricité & rénovation intérieure à Lyon"
-        intro="Cinq domaines d'expertise, un seul artisan qualifié. AH ELEC RENOV intervient de la mise aux normes électriques à la rénovation complète de votre logement, sans sous-traitance, dans l'ouest lyonnais."
+        title="Électricité & rénovation intérieure à Paris"
+        intro="Cinq domaines d'expertise, un seul artisan qualifié. AH ELEC RENOV intervient de la mise aux normes électriques à la rénovation complète de votre logement, sans sous-traitance, dans la région parisienne."
       />
 
       {/* Fil d'Ariane */}

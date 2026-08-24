@@ -91,6 +91,14 @@ section[id] {
   scroll-margin-top: 6rem;
 }
 
+/* La barre d'action mobile est fixée en bas : on libère la hauteur
+   correspondante pour que le footer ne passe jamais dessous. */
+@media (max-width: 1023px) {
+  body {
+    padding-bottom: 4.75rem;
+  }
+}
+
 /* Chiffres alignés (étapes, données) */
 .tabular {
   font-variant-numeric: tabular-nums;

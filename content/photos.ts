@@ -26,8 +26,8 @@ const ID = {
   artisanPortrait: "photo-1581092160562-40aa08e78837",
   artisanTravail: "photo-1504307651254-35680f356dfd",
   bureauDevis: "photo-1497366216548-37526070297c",
-  lyonVille: "photo-1565538810643-b5bdb714032a",
-  architectureLyon: "photo-1431576901776-e539bd916ba2",
+  parisVille: "photo-1565538810643-b5bdb714032a",
+  architectureParis: "photo-1431576901776-e539bd916ba2",
 } as const;
 
 export type PhotoKey = keyof typeof ID;

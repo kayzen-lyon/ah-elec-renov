@@ -1,10 +1,14 @@
+import { Phone } from "lucide-react";
 import { Container } from "@/components/ui/Container";
+import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "./Reveal";
 import { MagneticButton } from "./MagneticButton";
+import { company, hasPhone } from "@/content/company";
+import { promesse } from "@/content/urgence";
 
 export function CTABand({
-  title = "Prêt à lancer votre projet ?",
-  text = "Discutons ensemble de vos travaux. Devis détaillé et personnalisé, gratuit et sans engagement.",
+  title = "Une urgence électrique ? On arrive.",
+  text = `Un seul numéro, une équipe qui décroche ${promesse.disponibilite}. Devis annoncé avant intervention, tarif respecté.`,
 }: {
   title?: string;
   text?: string;
@@ -27,9 +31,22 @@ export function CTABand({
               {title}
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-lg text-cream/70">{text}</p>
-            <div className="mt-10 flex justify-center">
-              <MagneticButton href="/devis">
-                Demander mon devis gratuit
+            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              {hasPhone && (
+                <ButtonLink
+                  href={company.contact.phoneHref}
+                  variant="copper"
+                  size="lg"
+                >
+                  <Phone className="h-5 w-5" aria-hidden />
+                  {company.contact.phone}
+                </ButtonLink>
+              )}
+              <MagneticButton
+                href="/urgence"
+                className="border-2 border-cream/30 bg-transparent text-cream hover:border-copper-300"
+              >
+                Demander une intervention
               </MagneticButton>
             </div>
           </div>

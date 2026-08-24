@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { company } from "@/content/company";
 
 export const alt =
-  "AH ELEC RENOV — Électricité & rénovation intérieure, ouest lyonnais";
+  "AH ELEC RENOV — Électricité & rénovation intérieure, région parisienne";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -77,7 +77,7 @@ export default function OpengraphImage() {
             }}
           >
             <div style={{ width: 44, height: 3, background: "#C9772F" }} />
-            Lyon · Ouest lyonnais
+            Paris · Région parisienne
           </div>
           <div
             style={{

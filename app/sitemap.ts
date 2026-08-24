@@ -6,6 +6,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://ahelecrenov.fr";
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     "",
+    "/urgence",
     "/services",
     "/realisations",
     "/a-propos",
@@ -24,6 +25,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${siteUrl}${route}`,
     lastModified: new Date("2026-06-08"),
     changeFrequency: "monthly" as const,
-    priority: route === "" ? 1 : 0.7,
+    priority: route === "" ? 1 : route === "/urgence" ? 0.9 : 0.7,
   }));
 }

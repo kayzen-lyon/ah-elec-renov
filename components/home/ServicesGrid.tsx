@@ -96,6 +96,7 @@ function DarkCard({ service }: { service: Service }) {
 }
 
 export function ServicesGrid() {
+  const depannage = getService("depannage-urgence")!;
   const electricite = getService("electricite")!;
   const salleDeBain = getService("salle-de-bain")!;
   const cuisine = getService("cuisine")!;
@@ -110,29 +111,35 @@ export function ServicesGrid() {
             Nos expertises
           </span>
           <h2 className="mt-4 text-3xl font-bold text-anthracite sm:text-4xl">
-            Solutions complètes de rénovation
+            L'électricité de A à Z, urgence comprise
           </h2>
           <p className="mt-4 text-lg text-muted">
-            De la mise aux normes électriques à la rénovation complète d'une
-            pièce, tout est réalisé et coordonné par le même artisan.
+            Le dépannage d'urgence 24h/24 est notre cœur de métier. Nous
+            assurons aussi l'installation, la mise aux normes et les travaux qui
+            en découlent, avec un seul interlocuteur.
           </p>
         </Reveal>
 
-        <div className="grid grid-cols-1 gap-5 lg:grid-cols-12">
-          <Reveal className="lg:col-span-8">
-            <LargeCard service={electricite} />
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-12">
+          {/* Le dépannage d'urgence occupe la place dominante. */}
+          <Reveal className="sm:col-span-2 lg:col-span-8">
+            <LargeCard service={depannage} />
           </Reveal>
-          <Reveal delay={0.05} className="lg:col-span-4">
+          <Reveal delay={0.05} className="sm:col-span-2 lg:col-span-4">
+            <DarkCard service={electricite} />
+          </Reveal>
+
+          <Reveal delay={0.05} className="lg:col-span-3">
+            <Card service={renovation} />
+          </Reveal>
+          <Reveal delay={0.1} className="lg:col-span-3">
             <Card service={salleDeBain} />
           </Reveal>
-          <Reveal delay={0.05} className="lg:col-span-4">
+          <Reveal delay={0.15} className="lg:col-span-3">
             <Card service={cuisine} />
           </Reveal>
-          <Reveal delay={0.1} className="lg:col-span-4">
+          <Reveal delay={0.2} className="lg:col-span-3">
             <Card service={plomberie} />
-          </Reveal>
-          <Reveal delay={0.15} className="lg:col-span-4">
-            <DarkCard service={renovation} />
           </Reveal>
         </div>
       </Container>

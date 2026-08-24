@@ -6,6 +6,7 @@ import { Footer } from "@/components/site/Footer";
 import { MobileFAB } from "@/components/site/MobileFAB";
 import { CookieBanner } from "@/components/legal/CookieBanner";
 import { company } from "@/content/company";
+import { promesse } from "@/content/urgence";
 import { qrSvg } from "@/lib/qr";
 import { mapsUrl } from "@/content/company";
 import type { ContactQR } from "@/components/contact/ContactCard";
@@ -28,31 +29,29 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://ahelecrenov.fr";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${company.brandName} — Électricien & rénovation à Lyon`,
+    default: `${company.brandName} — Dépannage électrique 24h/24 à Paris & Île-de-France`,
     template: `%s | ${company.brandName}`,
   },
-  description:
-    "Électricien certifié & rénovation intérieure clé en main à Lyon et dans l'ouest lyonnais. Mise aux normes NF C 15-100, salle de bain, cuisine, plomberie. Devis gratuit.",
+  description: `Électricien d'urgence à Paris et en région parisienne. Intervention en ${promesse.delai}, ${promesse.disponibilite}. Panne de courant, disjoncteur, court-circuit, tableau électrique. Devis gratuit avant intervention.`,
   keywords: [
-    "électricien Francheville",
-    "rénovation intérieure Lyon ouest",
+    "électricien urgence Paris",
+    "dépannage électrique Île-de-France",
+    "panne de courant Paris",
+    "électricien 24h/24 Paris",
     "mise aux normes NF C 15-100",
-    "rénovation salle de bain",
-    "artisan électricien ouest lyonnais",
+    "dépannage tableau électrique",
   ],
   openGraph: {
     type: "website",
     locale: "fr_FR",
     siteName: company.brandName,
-    title: `${company.brandName} — Électricité & rénovation intérieure`,
-    description:
-      "Un seul interlocuteur, de l'électricité à la rénovation clé en main. Lyon et ouest lyonnais.",
+    title: `${company.brandName} — Dépannage électrique en ${promesse.delai}`,
+    description: `Un seul numéro pour toutes vos urgences électriques. ${promesse.zoneLongue}, ${promesse.disponibilite}.`,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${company.brandName} — Électricité & rénovation intérieure`,
-    description:
-      "Un seul interlocuteur, de l'électricité à la rénovation clé en main. Lyon et ouest lyonnais.",
+    title: `${company.brandName} — Dépannage électrique en ${promesse.delai}`,
+    description: `Un seul numéro pour toutes vos urgences électriques. ${promesse.zoneLongue}, ${promesse.disponibilite}.`,
   },
   robots: { index: true, follow: true },
 };

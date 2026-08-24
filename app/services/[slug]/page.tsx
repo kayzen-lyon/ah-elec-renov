@@ -99,7 +99,7 @@ export default async function ServicePage({
         title={service.title}
         intro={content.intro[0]}
         image={heroImage}
-        imageAlt={`${service.title} à Lyon — AH ELEC RENOV`}
+        imageAlt={`${service.title} à Paris — AH ELEC RENOV`}
       >
         <div className="flex flex-wrap gap-3">
           <Button href="/devis" variant="copper" size="lg">

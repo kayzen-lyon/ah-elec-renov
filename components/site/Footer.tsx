@@ -7,6 +7,7 @@ import {
   hasPhone,
   hasPhoneFixed,
   hasEmail,
+  displayLocation,
 } from "@/content/company";
 import { nav, interventionZones } from "@/content/site";
 import { services } from "@/content/services";
@@ -28,14 +29,13 @@ export function Footer() {
             </span>
           </Link>
           <p className="mt-4 text-sm leading-relaxed">
-            Expert en électricité et rénovation intérieure dans l'ouest
-            lyonnais. Qualité artisanale, engagement local.
+            Dépannage électrique d'urgence et travaux aux normes à Paris et en
+            région parisienne. Un seul numéro, 24h/24.
           </p>
           <address className="mt-5 space-y-2.5 text-sm not-italic">
             <span className="flex items-start gap-2.5">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-copper-300" />
-              {company.address.street}, {company.address.postalCode}{" "}
-              {company.address.city}
+              {displayLocation}
             </span>
             {hasPhone && (
               <a

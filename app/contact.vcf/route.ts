@@ -30,12 +30,12 @@ export function GET() {
   }
 
   lines.push(
-    `ADR;TYPE=WORK:;;${company.address.street};${company.address.city};;${company.address.postalCode};${company.address.country}`,
+    `ADR;TYPE=WORK:;;;Paris;Île-de-France;;France`,
   );
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://ahelecrenov.fr";
   lines.push(`URL:${siteUrl}`);
-  lines.push(`NOTE:Mise aux normes NF C 15-100, salle de bain, cuisine, plomberie, rénovation complète. Secteur ouest lyonnais.`);
+  lines.push(`NOTE:Dépannage électrique d'urgence 24h/24, recherche de panne, tableau électrique, mise aux normes NF C 15-100. Paris et Île-de-France.`);
   lines.push("END:VCARD");
 
   const body = lines.join("\r\n");

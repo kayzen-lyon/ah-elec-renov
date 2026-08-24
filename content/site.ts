@@ -1,75 +1,59 @@
 /** Navigation, zone d'intervention, étapes, réassurance — contenu éditorial. */
 
+import { parcours, promesse } from "@/content/urgence";
+
 export const nav = [
+  { label: "Dépannage 24/7", href: "/urgence" },
   { label: "Services", href: "/services" },
+  { label: "Zone d'intervention", href: "/zone-intervention" },
   { label: "Réalisations", href: "/realisations" },
   { label: "À propos", href: "/a-propos" },
-  { label: "Zone d'intervention", href: "/zone-intervention" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
-/** Communes desservies — secteur ouest lyonnais. Francheville = siège. */
+/** Secteurs desservis — Paris et région parisienne. */
 export const interventionZones = [
-  "Francheville",
-  "Tassin-la-Demi-Lune",
-  "Charbonnières-les-Bains",
-  "Écully",
-  "Sainte-Foy-lès-Lyon",
-  "Craponne",
-  "Marcy-l'Étoile",
-  "La Tour-de-Salvagny",
-  "Lyon 5e",
-  "Lyon 9e",
+  "Paris (tous arrondissements)",
+  "Hauts-de-Seine (92)",
+  "Seine-Saint-Denis (93)",
+  "Val-de-Marne (94)",
+  "Val-d'Oise (95)",
+  "Yvelines (78)",
+  "Essonne (91)",
+  "Seine-et-Marne (77)",
 ] as const;
 
 /** Bandeau de réassurance (home + pages). */
 export const reassurances = [
-  "Devis gratuit",
-  "Assurance décennale",
-  "Intervention rapide secteur ouest lyonnais",
-  "Mise aux normes NF C 15-100",
+  `Intervention en ${promesse.delaiCourt}`,
+  "Disponible 24h/24 · 7j/7",
+  "Devis gratuit avant travaux",
+  "Normes NF C 15-100",
 ] as const;
 
 /** Arguments « Pourquoi AH ELEC RENOV ». */
 export const whyUs = [
   {
+    title: "Rapidité",
+    text: `Électricien sur place en ${promesse.delai} sur Paris et la petite couronne. Nos équipes sont réparties sur la région pour réduire les délais au minimum.`,
+  },
+  {
+    title: "Disponibilité totale",
+    text: "Nuits, week-ends et jours fériés inclus. Une panne électrique n'attend pas les heures de bureau — notre standard non plus.",
+  },
+  {
     title: "Un seul interlocuteur",
-    text: "De l'électricité aux finitions, vous traitez avec une seule personne, du devis à la réception.",
+    text: "Un numéro, un formulaire, une équipe. Vous décrivez votre panne une seule fois et nous engageons l'électricien adapté.",
   },
   {
-    title: "Pas de sous-traitance opaque",
-    text: "Le travail est réalisé par l'artisan, sans intermédiaire ni surprise.",
-  },
-  {
-    title: "Proximité",
-    text: "Proche de vous dans l'agglomération lyonnaise, j'interviens vite sur tout le secteur ouest.",
+    title: "Transparence",
+    text: "Devis annoncé avant toute intervention, tarif respecté, aucun frais caché. Vous validez avant que quoi que ce soit ne commence.",
   },
   {
     title: "Travail aux normes",
-    text: "Électricité conforme NF C 15-100, attestation Consuel, soin du détail.",
+    text: "Électriciens qualifiés, installations conformes NF C 15-100, attestation Consuel quand les travaux le nécessitent.",
   },
 ] as const;
 
-/** Étapes de collaboration. */
-export const steps = [
-  {
-    n: "01",
-    title: "Contact",
-    text: "Vous me décrivez votre projet par téléphone ou via le formulaire.",
-  },
-  {
-    n: "02",
-    title: "Visite & devis gratuit",
-    text: "Je me déplace, j'évalue le chantier et vous remets un devis détaillé gratuit.",
-  },
-  {
-    n: "03",
-    title: "Réalisation",
-    text: "Les travaux sont menés dans le respect des délais et des normes.",
-  },
-  {
-    n: "04",
-    title: "Réception conforme",
-    text: "On valide ensemble le chantier ; attestation Consuel si nécessaire.",
-  },
-] as const;
+/** Étapes de collaboration — parcours en 5 temps (source : content/urgence.ts). */
+export const steps = parcours;

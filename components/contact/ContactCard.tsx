@@ -13,7 +13,7 @@ import {
   Globe,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { company, mapsDirectionsUrl } from "@/content/company";
+import { company, displayLocation, mapsDirectionsUrl } from "@/content/company";
 
 export type ContactQR = {
   site: string;
@@ -121,7 +121,7 @@ export function ContactCard({
                   {company.legalName}
                 </h2>
                 <p className="mt-1 text-sm text-cream/70">
-                  {company.director} · {company.address.city}
+                  {company.director} · {displayLocation}
                 </p>
               </div>
 

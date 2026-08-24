@@ -27,9 +27,9 @@ import { bio, valeurs, engagements, stats } from "@/content/about";
 /* ------------------------------------------------------------------ */
 
 export const metadata: Metadata = {
-  title: "À propos — Hocine ASLI, artisan électricien à Lyon",
+  title: "À propos — Hocine ASLI, artisan électricien à Paris",
   description:
-    "Hocine ASLI, artisan électricien et rénovation intérieure à Lyon 9e. Parcours, valeurs et engagements d'AH ELEC RENOV.",
+    "Hocine ASLI, artisan électricien et rénovation intérieure à Paris 15e. Parcours, valeurs et engagements d'AH ELEC RENOV.",
 };
 
 /* ------------------------------------------------------------------ */
@@ -62,10 +62,8 @@ function aboutJsonLd() {
       },
       address: {
         "@type": "PostalAddress",
-        addressLocality: company.address.city,
-        postalCode: company.address.postalCode,
-        addressRegion: company.address.region,
-        addressCountry: company.address.countryCode,
+        addressRegion: "Île-de-France",
+        addressCountry: "FR",
       },
     },
   };
@@ -97,9 +95,9 @@ export default function AProposPage() {
       <PageHero
         eyebrow="À propos"
         title="L'artisan derrière AH ELEC RENOV"
-        intro="Hocine ASLI, électricien et rénovateur à Lyon 9e — un seul interlocuteur pour vos travaux, de l'électricité aux finitions."
+        intro="Hocine ASLI, électricien et rénovateur à Paris 15e — un seul interlocuteur pour vos travaux, de l'électricité aux finitions."
         image={photo("artisanTravail", 2000, 72)}
-        imageAlt="Hocine ASLI en intervention électrique sur un chantier de l'ouest lyonnais"
+        imageAlt="Hocine ASLI en intervention électrique sur un chantier de la région parisienne"
       />
 
       {/* ── Fil d'Ariane ── */}
@@ -152,7 +150,7 @@ export default function AProposPage() {
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-lift">
                 <Image
                   src={photo("artisanPortrait", 900, 72)}
-                  alt="Hocine ASLI, artisan électricien et rénovateur, AH ELEC RENOV Lyon"
+                  alt="Hocine ASLI, artisan électricien et rénovateur, AH ELEC RENOV Paris"
                   fill
                   sizes="(max-width: 1024px) 100vw, 45vw"
                   placeholder="blur"
@@ -166,7 +164,7 @@ export default function AProposPage() {
                   {company.brandName}
                 </p>
                 <p className="mt-0.5 font-bold text-cream">{company.director}</p>
-                <p className="text-sm text-cream/60">Lyon 9e · ouest lyonnais</p>
+                <p className="text-sm text-cream/60">Paris 15e · région parisienne</p>
               </div>
             </Reveal>
           </div>
@@ -340,7 +338,7 @@ export default function AProposPage() {
       {/* ── CTA ── */}
       <CTABand
         title="Un projet en tête ? Parlons-en."
-        text="Devis gratuit, déplacement sans engagement dans tout l'ouest lyonnais. Je vous réponds sous 24 h."
+        text="Devis gratuit, déplacement sans engagement dans toute la région parisienne. Je vous réponds sous 24 h."
       />
     </>
   );

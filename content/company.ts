@@ -20,8 +20,8 @@ export const company = {
   // --- Identité ---
   legalName: "AH ELEC RENOV", // marque affichée (à confirmer : AH+elec ?)
   brandName: "AH ELEC RENOV",
-  tagline: "Électricité & rénovation intérieure clé en main",
-  baseline: "Un seul interlocuteur, de l'électricité à la rénovation.",
+  tagline: "Dépannage électrique 24h/24 à Paris et en Île-de-France",
+  baseline: "Un seul numéro, un électricien chez vous en 30 minutes.",
   director: "Hocine ASLI",
   directorRole: "Président", // SASU → Président
 
@@ -83,9 +83,41 @@ export const company = {
     googleReviewUrl: "", // À COMPLÉTER : lien « laisser un avis » (QR Avis)
   },
 
-  // --- Horaires (à confirmer) ---
-  hours: "Du lundi au vendredi, 8h–18h",
+  // --- Horaires : standard d'urgence ouvert en continu ---
+  hours: "24h/24, 7j/7, jours fériés inclus",
 } as const;
+
+/**
+ * Établissement d'exploitation en Île-de-France.
+ *
+ * ⚠️ IMPORTANT — le siège social déclaré (`company.address`) est à Lyon 9e ;
+ * il reste affiché dans les mentions légales, où il est obligatoire et exact.
+ * Mais la zone d'intervention commerciale est Paris / Île-de-France : tant
+ * qu'aucune adresse francilienne n'est fournie, le site n'affiche AUCUNE
+ * adresse postale hors mentions légales (uniquement le téléphone et la zone),
+ * et le JSON-LD `LocalBusiness` déclare la région servie sans épingler Lyon.
+ *
+ * Dès qu'une adresse parisienne existe, renseigner les champs ci-dessous et
+ * passer `active: true` : la fiche locale, la carte et le JSON-LD basculent
+ * automatiquement dessus.
+ */
+export const establishment = {
+  active: false,
+  street: "", // À COMPLÉTER — adresse de l'établissement francilien
+  postalCode: "",
+  city: "Paris",
+  region: "Île-de-France",
+  countryCode: "FR",
+  // Centre de Paris — utilisé pour la géolocalisation tant que l'adresse
+  // exacte n'est pas connue.
+  latitude: 48.8566,
+  longitude: 2.3522,
+} as const;
+
+/** Adresse à utiliser pour l'affichage local et le JSON-LD. */
+export const displayLocation = establishment.active
+  ? `${establishment.street}, ${establishment.postalCode} ${establishment.city}`
+  : "Paris & région parisienne";
 
 /**
  * Agence web ayant réalisé le site (crédit footer + mentions légales).
@@ -107,14 +139,21 @@ export const agency = {
   creditLabel: "Fièrement réalisé par Kayzen Web",
 } as const;
 
-/** URL Google Maps de l'adresse du siège (toujours dérivable). */
+/** Requête cartographique — l'établissement s'il existe, sinon la zone servie. */
+const mapsQuery = establishment.active
+  ? `${company.brandName} ${establishment.street} ${establishment.postalCode} ${establishment.city}`
+  : `${company.brandName} électricien Paris`;
+
+/** URL Google Maps de la fiche / zone servie. */
 export const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-  `${company.brandName} ${company.address.street} ${company.address.postalCode} ${company.address.city}`,
+  mapsQuery,
 )}`;
 
-/** URL d'itinéraire Google Maps vers le siège. */
+/** URL d'itinéraire Google Maps (n'a de sens qu'avec un établissement réel). */
 export const mapsDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
-  `${company.address.street} ${company.address.postalCode} ${company.address.city}`,
+  establishment.active
+    ? `${establishment.street} ${establishment.postalCode} ${establishment.city}`
+    : "Paris, France",
 )}`;
 
 /** Téléphones / email renseignés ? */

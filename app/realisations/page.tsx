@@ -16,7 +16,7 @@ import { photo } from "@/content/photos";
 export const metadata: Metadata = {
   title: "Réalisations — chantiers avant/après | AH Elec Renov",
   description:
-    "Découvrez nos chantiers d'électricité et de rénovation intérieure dans l'ouest lyonnais : salles de bain, cuisines, tableaux électriques et bien plus.",
+    "Découvrez nos chantiers d'électricité et de rénovation intérieure dans la région parisienne : salles de bain, cuisines, tableaux électriques et bien plus.",
 };
 
 /* ─── Données statiques ───────────────────────────────────────────── */
@@ -57,7 +57,7 @@ const categories = [
 const stats = [
   { value: "8+", label: "Corps de métier maîtrisés" },
   { value: "100 %", label: "Conformité NF C 15-100" },
-  { value: "Ouest lyonnais", label: "Zone d'intervention" },
+  { value: "Région parisienne", label: "Zone d'intervention" },
   { value: "1 équipe", label: "Interlocuteur unique" },
 ];
 
@@ -74,7 +74,7 @@ export default function RealisationsPage() {
         title="Nos chantiers, avant / après"
         intro="Chaque projet ci-dessous illustre notre méthode : un seul interlocuteur, un planning tenu et des finitions soignées. Survolez une image pour voir l'état d'origine."
         image={photo("interieurRenove")}
-        imageAlt="Intérieur rénové par AH Elec Renov dans l'ouest lyonnais"
+        imageAlt="Intérieur rénové par AH Elec Renov dans la région parisienne"
       />
 
       {/* Fil d'Ariane */}

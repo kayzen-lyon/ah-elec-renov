@@ -11,7 +11,7 @@ export function Steps() {
             Méthodologie
           </span>
           <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-            Votre projet en 4 étapes
+            Votre dépannage en {steps.length} étapes
           </h2>
         </Reveal>
 

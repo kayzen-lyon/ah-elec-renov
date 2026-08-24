@@ -1,44 +1,73 @@
-import { company } from "@/content/company";
+import { company, establishment } from "@/content/company";
+import { communesCouvertes } from "@/content/zones";
+import { promesse } from "@/content/urgence";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://ahelecrenov.fr";
 
+/** Départements franciliens servis — repris tel quel par tous les JSON-LD. */
+const areaServed = [
+  { "@type": "AdministrativeArea", name: "Île-de-France" },
+  ...communesCouvertes.map((name) => ({ "@type": "City", name })),
+];
+
 /**
- * JSON-LD principal : électricien + entreprise du bâtiment, avec les données
- * réelles. Les champs vides (téléphone, etc.) sont omis tant qu'ils ne sont
- * pas renseignés.
+ * Adresse déclarée à Google.
+ *
+ * Tant qu'aucun établissement francilien n'est renseigné, on ne déclare que la
+ * région servie : déclarer le siège lyonnais alors que la zone commerciale est
+ * l'Île-de-France dégraderait le référencement local et induirait en erreur.
+ * Le siège légal reste affiché dans les mentions légales, où il est obligatoire.
+ */
+function postalAddress() {
+  const base = {
+    "@type": "PostalAddress",
+    addressRegion: establishment.region,
+    addressCountry: establishment.countryCode,
+  };
+  if (!establishment.active) return base;
+  return {
+    ...base,
+    streetAddress: establishment.street,
+    postalCode: establishment.postalCode,
+    addressLocality: establishment.city,
+  };
+}
+
+/**
+ * JSON-LD principal : électricien d'urgence en Île-de-France, ouvert 24h/24.
+ * Les champs vides ne sont pas émis tant qu'ils ne sont pas renseignés.
  */
 export function localBusinessJsonLd() {
   const data: Record<string, unknown> = {
     "@context": "https://schema.org",
-    "@type": ["Electrician", "HomeAndConstructionBusiness", "LocalBusiness"],
+    "@type": ["Electrician", "EmergencyService", "LocalBusiness"],
     "@id": `${siteUrl}/#business`,
     name: company.brandName,
-    description:
-      "Électricien & rénovation intérieure clé en main à Lyon et dans l'ouest lyonnais.",
+    description: `Dépannage électrique d'urgence à Paris et en Île-de-France. Intervention en ${promesse.delai}, ${promesse.disponibilite}.`,
     url: siteUrl,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: company.address.street,
-      postalCode: company.address.postalCode,
-      addressLocality: company.address.city,
-      addressRegion: company.address.region,
-      addressCountry: company.address.countryCode,
-    },
+    address: postalAddress(),
     geo: {
       "@type": "GeoCoordinates",
-      latitude: company.address.latitude,
-      longitude: company.address.longitude,
+      latitude: establishment.latitude,
+      longitude: establishment.longitude,
     },
-    areaServed: [
-      "Francheville",
-      "Tassin-la-Demi-Lune",
-      "Charbonnières-les-Bains",
-      "Écully",
-      "Sainte-Foy-lès-Lyon",
-      "Craponne",
-      "Marcy-l'Étoile",
-      "La Tour-de-Salvagny",
-      "Lyon",
+    areaServed,
+    /* Standard d'urgence ouvert en continu. */
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ],
+        opens: "00:00",
+        closes: "23:59",
+      },
     ],
     founder: { "@type": "Person", name: company.director },
   };
@@ -67,17 +96,11 @@ export function serviceJsonLd(opts: {
     description: opts.description,
     url: `${siteUrl}/services/${opts.slug}`,
     provider: { "@id": `${siteUrl}/#business` },
-    areaServed: [
-      "Lyon",
-      "Francheville",
-      "Tassin-la-Demi-Lune",
-      "Écully",
-      "Sainte-Foy-lès-Lyon",
-      "Craponne",
-    ],
+    areaServed,
     availableChannel: {
       "@type": "ServiceChannel",
-      serviceUrl: `${siteUrl}/devis`,
+      serviceUrl: `${siteUrl}/urgence`,
+      servicePhone: company.contact.phone,
     },
   };
 }

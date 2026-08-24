@@ -14,19 +14,19 @@ export const testimonials: Testimonial[] = [
   // TODO : remplacer par de vrais témoignages clients.
   {
     name: "Témoignage à venir",
-    city: "Ouest lyonnais",
+    city: "Région parisienne",
     project: "Rénovation salle de bain",
     text: "Espace réservé à un avis client. Les retours réels seront ajoutés ici une fois les premiers chantiers livrés et la fiche Google en ligne.",
   },
   {
     name: "Témoignage à venir",
-    city: "Francheville",
+    city: "Boulogne-Billancourt",
     project: "Mise aux normes électrique",
     text: "Espace réservé à un avis client. Les retours réels seront ajoutés ici une fois les premiers chantiers livrés et la fiche Google en ligne.",
   },
   {
     name: "Témoignage à venir",
-    city: "Tassin-la-Demi-Lune",
+    city: "Neuilly-sur-Seine",
     project: "Rénovation complète",
     text: "Espace réservé à un avis client. Les retours réels seront ajoutés ici une fois les premiers chantiers livrés et la fiche Google en ligne.",
   },
