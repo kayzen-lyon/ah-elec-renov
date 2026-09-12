@@ -5,6 +5,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { MobileFAB } from "@/components/site/MobileFAB";
 import { CookieBanner } from "@/components/legal/CookieBanner";
+import { MotionProvider } from "@/components/shared/MotionProvider";
 import { company } from "@/content/company";
 import { promesse } from "@/content/urgence";
 import { qrSvg } from "@/lib/qr";
@@ -75,17 +76,19 @@ export default async function RootLayout({
   return (
     <html lang="fr" className={`${bricolage.variable} ${inter.variable}`}>
       <body>
-        <a
-          href="#contenu"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[70] focus:rounded-md focus:bg-anthracite focus:px-4 focus:py-2 focus:text-cream"
-        >
-          Aller au contenu
-        </a>
-        <Header qr={qr} />
-        <main id="contenu">{children}</main>
-        <Footer />
-        <MobileFAB />
-        <CookieBanner />
+        <MotionProvider>
+          <a
+            href="#contenu"
+            className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[70] focus:rounded-md focus:bg-anthracite focus:px-4 focus:py-2 focus:text-cream"
+          >
+            Aller au contenu
+          </a>
+          <Header qr={qr} />
+          <main id="contenu">{children}</main>
+          <Footer />
+          <MobileFAB />
+          <CookieBanner />
+        </MotionProvider>
       </body>
     </html>
   );

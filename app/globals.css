@@ -24,7 +24,7 @@
   --color-cream-300: #e6e3db;
   --color-white-pure: #ffffff;
 
-  --color-muted: #6b7280; /* texte secondaire */
+  --color-muted: #565a63; /* texte secondaire — 6.1:1 sur cream (WCAG AA) */
   --color-line: #d8d5cd; /* filets / bordures claires */
   --color-electric: #2bd4d9; /* accent technique — filets fins only */
 
@@ -71,24 +71,50 @@ body {
   color: var(--color-cream);
 }
 
-/* Titres en display, bien serrés */
-h1,
-h2,
-h3,
-.font-display {
-  font-family: var(--font-display);
-  letter-spacing: -0.02em;
-  text-wrap: balance; /* évite les mots orphelins dans les titres */
-}
+/* ------------------------------------------------------------------
+   Typographie (Apple, « The Details of UI Typography ») : le tracking
+   dépend de la taille — négatif et de plus en plus serré à mesure que le
+   titre grossit, proche de 0 pour le texte courant, légèrement positif
+   pour les très petites capitales. Déclaré dans @layer base pour que les
+   utilitaires Tailwind (tracking-*, leading-*) gardent la main.
+------------------------------------------------------------------ */
+@layer base {
+  body {
+    font-optical-sizing: auto;
+    letter-spacing: 0;
+  }
 
-/* Paragraphes : meilleure césure / pas d'orphelins */
-p {
-  text-wrap: pretty;
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    text-wrap: balance; /* évite les mots orphelins dans les titres */
+  }
+  h1 {
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+  h2 {
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+  }
+  h3 {
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+  }
+
+  /* Paragraphes : meilleure césure / pas d'orphelins */
+  p {
+    text-wrap: pretty;
+  }
 }
 
 /* Ancres : décalage sous le header collant */
-section[id] {
-  scroll-margin-top: 6rem;
+section[id],
+article[id] {
+  scroll-margin-top: 7rem;
 }
 
 /* La barre d'action mobile est fixée en bas : on libère la hauteur
@@ -162,18 +188,112 @@ section[id] {
   filter: saturate(1.05) contrast(1.04);
 }
 
-/* Respect des préférences de mouvement réduit */
+/* ------------------------------------------------------------------
+   Matériaux translucides (Apple : la barre est une couche flottante sous
+   laquelle le contenu défile, pas une bande opaque). Saturation relevée
+   pour que les couleurs qui passent dessous restent vivantes.
+   Déclaré dans @layer components : un utilitaire Tailwind posé sur le même
+   élément (bg-*, transition-*) doit toujours pouvoir l'emporter.
+------------------------------------------------------------------ */
+@layer components {
+  .material-light {
+    /* 0.88 : assez translucide pour lire le matériau, assez opaque pour
+       garder le contraste des libellés quand du contenu sombre passe dessous */
+    background-color: rgba(247, 245, 241, 0.88);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: blur(20px) saturate(180%);
+  }
+  .material-dark {
+    background-color: rgba(16, 19, 23, 0.82);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    backdrop-filter: blur(20px) saturate(160%);
+    /* Arête haute claire : la lumière accroche le bord du matériau */
+    border-top: 1px solid rgba(247, 245, 241, 0.1);
+  }
+
+  /* Effet de bord au défilement : un dégradé là où le contenu passe sous la
+     barre, plutôt qu'un filet de 1 px permanent. */
+  .scroll-edge {
+    box-shadow: 0 1px 0 rgba(26, 29, 37, 0.06);
+  }
+  .scroll-edge::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 100%;
+    height: 14px;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      rgba(16, 19, 23, 0.07),
+      rgba(16, 19, 23, 0)
+    );
+  }
+
+  /* Retour instantané à l'appui (pointer-down), pas au relâchement.
+     Propriété `scale` (pas `transform`) : ne se bat ni avec les translate
+     inline ni avec les transitions déclarées par ailleurs. */
+  .press:active {
+    scale: 0.97;
+  }
+
+  /* Transparence réduite : les matériaux deviennent givrés puis opaques */
+  @media (prefers-reduced-transparency: reduce) {
+    .material-light {
+      background-color: var(--color-cream);
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+    .material-dark {
+      background-color: var(--color-ink);
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+  }
+
+  /* Contraste renforcé : fonds pleins + bord net */
+  @media (prefers-contrast: more) {
+    .material-light {
+      background-color: var(--color-cream);
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+      border-bottom: 1px solid var(--color-anthracite);
+    }
+    .material-dark {
+      background-color: var(--color-ink);
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+      border-top-color: var(--color-cream);
+    }
+  }
+}
+
+/* ------------------------------------------------------------------
+   Mouvement réduit : on coupe les animations vestibulaires (pulsations,
+   glissements) mais on garde un fondu court — moins de mouvement ne veut
+   pas dire plus aucun retour visuel. La hauteur reste animée pour éviter
+   les sauts de mise en page (bandeau d'urgence).
+------------------------------------------------------------------ */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-duration: 0.12s !important;
+    transition-property:
+      opacity, color, background-color, border-color, height !important;
     scroll-behavior: auto !important;
   }
   .img-blurup {
     filter: none;
     transform: none;
+  }
+  /* La pulsation figée laisserait un disque plein : on la retire */
+  .animate-ping {
+    display: none;
+  }
+  .press:active {
+    scale: 1;
   }
 }

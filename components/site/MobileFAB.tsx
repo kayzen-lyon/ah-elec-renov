@@ -8,12 +8,12 @@ import { company, hasPhone } from "@/content/company";
  */
 export function MobileFAB() {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-anthracite-500 bg-ink/95 backdrop-blur-md lg:hidden">
+    <div className="material-dark fixed inset-x-0 bottom-0 z-40 lg:hidden">
       <div className="flex items-center gap-2.5 px-4 py-3">
         {hasPhone && (
           <a
             href={company.contact.phoneHref}
-            className="flex flex-1 items-center justify-center gap-2 rounded-full bg-copper px-4 py-3.5 text-sm font-bold text-cream"
+            className="press flex flex-1 items-center justify-center gap-2 rounded-full bg-copper px-4 py-3.5 text-sm font-bold text-cream"
           >
             <Phone className="h-4 w-4" strokeWidth={2.5} aria-hidden />
             Appeler maintenant
@@ -21,7 +21,7 @@ export function MobileFAB() {
         )}
         <Link
           href="/urgence"
-          className="flex items-center justify-center gap-2 rounded-full border border-cream/25 px-5 py-3.5 text-sm font-semibold text-cream"
+          className="press flex items-center justify-center gap-2 rounded-full border border-cream/25 px-5 py-3.5 text-sm font-semibold text-cream"
         >
           <MessageSquareText className="h-4 w-4" aria-hidden />
           <span className="sr-only">Demander une intervention</span>

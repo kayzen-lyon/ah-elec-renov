@@ -5,7 +5,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-semibold bg-copper text-cream copper-glow focus-visible:outline-2 focus-visible:outline-offset-2 will-change-transform";
+  "press inline-flex items-center justify-center gap-2 rounded-full font-semibold bg-copper text-cream copper-glow focus-visible:outline-2 focus-visible:outline-offset-2 will-change-transform";
 
 const sizes = {
   md: "h-11 px-6 text-sm",

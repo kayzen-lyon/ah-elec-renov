@@ -5,7 +5,7 @@ type Variant = "copper" | "dark" | "outline" | "outline-light" | "ghost";
 type Size = "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-60 disabled:pointer-events-none";
+  "press inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-60 disabled:pointer-events-none";
 
 const variants: Record<Variant, string> = {
   copper: "bg-copper text-cream hover:bg-copper-600 copper-glow",

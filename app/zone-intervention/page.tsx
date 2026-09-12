@@ -131,7 +131,10 @@ export default function ZoneInterventionPage() {
           <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
             {zones.map((zone, i) => (
               <Reveal as="div" key={zone.slug} delay={Math.min(i * 0.04, 0.24)}>
-                <article className="flex h-full flex-col gap-4 rounded-2xl border border-line bg-white p-6 shadow-soft transition-shadow duration-200 hover:shadow-lift sm:p-7">
+                <article
+                  id={zone.slug}
+                  className="flex h-full flex-col gap-4 rounded-2xl border border-line bg-white p-6 shadow-soft transition-shadow duration-200 hover:shadow-lift sm:p-7"
+                >
                   <header className="flex items-start justify-between gap-4">
                     <div className="flex items-center gap-3">
                       <span
